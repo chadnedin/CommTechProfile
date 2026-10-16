@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="An accessible e-Portfolio documenting learning, projects, and professional growth."
+    />
+    <title>My e-Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="site-title" href="/" aria-label="e-Portfolio home">My e-Portfolio</a>
+        <button
+          class="theme-toggle"
+          type="button"
+          aria-pressed="false"
+          aria-label="Switch to dark mode"
+        >
+          <span class="theme-icon" aria-hidden="true">◐</span>
+          <span class="theme-label">Dark mode</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="intro-title">
+        <div class="container hero-content">
+          <p class="eyebrow">Welcome</p>
+          <h1 id="intro-title">A record of my learning journey.</h1>
+          <p class="hero-summary">
+            This e-Portfolio brings together my coursework, reflections, and developing
+            skills in one accessible space.
+          </p>
+        </div>
+      </section>
+
+      <section class="portfolio-section" aria-labelledby="module-1-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Coursework</p>
+            <h2 id="module-1-title">Module 1</h2>
+          </div>
+          <article class="module-card">
+            <h3>Module overview</h3>
+            <p>
+              This is a placeholder for Module 1 content. Add your learning outcomes,
+              evidence, reflections, and supporting resources here.
+            </p>
+            <a class="text-link" href="#module-1-title">View module details <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>&copy; 2026 My e-Portfolio</p>
+        <p>Built with purpose and continuous learning.</p>
+      </div>
+    </footer>
+  </body>
+</html>
