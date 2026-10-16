@@ -1,6 +1,13 @@
 const themeToggle = document.querySelector(".theme-toggle");
 const themeLabel = themeToggle.querySelector(".theme-label");
 const themeIcon = themeToggle.querySelector(".theme-icon");
+const videoFallback = document.querySelector(".video-fallback");
+const videoWrapper = document.querySelector(".video-wrapper");
+
+if (videoFallback && window.location.protocol === "file:") {
+  videoFallback.hidden = false;
+  videoWrapper.hidden = true;
+}
 
 function setTheme(isDark) {
   document.documentElement.dataset.theme = isDark ? "dark" : "light";
