@@ -29,3 +29,36 @@ themeToggle.addEventListener("click", () => {
   setTheme(isDark);
   localStorage.setItem(themeStorageKey, isDark ? "dark" : "light");
 });
+
+document.body.addEventListener("click", (event) => {
+  const splatter = document.createElement("div");
+  splatter.className = "ink-splatter";
+  splatter.setAttribute("aria-hidden", "true");
+  splatter.style.left = `${event.pageX}px`;
+  splatter.style.top = `${event.pageY}px`;
+  document.body.append(splatter);
+  window.setTimeout(() => splatter.remove(), 500);
+});
+
+const stampTargets = document.querySelectorAll("section, .project-card");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (reducedMotion || !("IntersectionObserver" in window)) {
+  stampTargets.forEach((target) => target.classList.add("stamp-visible"));
+} else {
+  stampTargets.forEach((target) => target.classList.add("stamp-hidden"));
+  const stampObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove("stamp-hidden");
+          entry.target.classList.add("stamp-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  stampTargets.forEach((target) => stampObserver.observe(target));
+}
