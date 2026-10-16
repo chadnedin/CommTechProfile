@@ -3,6 +3,7 @@ const themeLabel = themeToggle.querySelector(".theme-label");
 const themeIcon = themeToggle.querySelector(".theme-icon");
 const videoFallback = document.querySelector(".video-fallback");
 const videoWrapper = document.querySelector(".video-wrapper");
+const themeStorageKey = "commtech-portfolio-theme";
 
 if (videoFallback && window.location.protocol === "file:") {
   videoFallback.hidden = false;
@@ -20,6 +21,11 @@ function setTheme(isDark) {
   themeIcon.textContent = isDark ? "☀" : "◐";
 }
 
+const savedTheme = localStorage.getItem(themeStorageKey);
+setTheme(savedTheme === "dark");
+
 themeToggle.addEventListener("click", () => {
-  setTheme(document.documentElement.dataset.theme !== "dark");
+  const isDark = document.documentElement.dataset.theme !== "dark";
+  setTheme(isDark);
+  localStorage.setItem(themeStorageKey, isDark ? "dark" : "light");
 });
